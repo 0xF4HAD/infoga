@@ -32,9 +32,8 @@ def get_whois_info(domain):
     try:
         print(f'\n{greenx}[++] Getting Whois info...')
         print(f'{green}={reset}' * 50)
+        
         w = whois.query(domain)
-
-        # print(f'{yellow}[*] Name: {}'.format(w.name))
         print(f'{yellow}[*]{reset} Name: {w.name}')
         print(f'{yellow}[*]{reset} Registrar: {w.registrar}')
         print(f'{yellow}[*]{reset} Creation Date: {w.creation_date}')
