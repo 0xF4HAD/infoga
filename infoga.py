@@ -43,6 +43,28 @@ def get_dns_info(domain):
         print('[-] Error getting DNS info: {}'.format(e))
 
 
+# Function to get DNS info including reverse DNS lookup
+
+def get_reversedns_lookup(domain):
+    try:
+        print('\n[++] Reverse DNS Lookup...')
+        print('=' * 50)
+        ip = socket.gethostbyname(domain)
+        if ip:
+            print('[*] IP Address: {}'.format(ip))
+
+            # Reverse DNS lookup
+            try:
+                hostnames = socket.gethostbyaddr(ip)
+                print('[*] Reverse DNS Lookup:')
+                for hostname in hostnames:
+                    print('   - {}'.format(hostname))
+            except Exception as e:
+                print('[-] Reverse DNS lookup failed: {}'.format(e))
+    except Exception as e:
+        print('[-] Error getting DNS info: {}'.format(e))
+
+
 def get_geolocation_info(domain):
     try:
         print('\n[++] Getting Geolocation info...')
@@ -100,27 +122,6 @@ def extract_emails(url):
     except Exception as e:
         print('[-] Error extracting email addresses: {}'.format(e))
 
-# Function to get DNS info including reverse DNS lookup
-
-
-def get_dns_info(domain):
-    try:
-        print('\n[++] Getting DNS info...')
-        print('=' * 50)
-        ip = socket.gethostbyname(domain)
-        if ip:
-            print('[*] IP Address: {}'.format(ip))
-
-            # Reverse DNS lookup
-            try:
-                hostnames = socket.gethostbyaddr(ip)
-                print('[*] Reverse DNS Lookup:')
-                for hostname in hostnames:
-                    print('   - {}'.format(hostname))
-            except Exception as e:
-                print('[-] Reverse DNS lookup failed: {}'.format(e))
-    except Exception as e:
-        print('[-] Error getting DNS info: {}'.format(e))
 
 # Function to get website title
 
@@ -156,6 +157,7 @@ if __name__ == '__main__':
     if domain:
         get_whois_info(domain)
         get_dns_info(domain)
+        get_reversedns_lookup(domain)
         get_geolocation_info(domain)
     else:
         print('[-] Please provide a domain with -d option.')
