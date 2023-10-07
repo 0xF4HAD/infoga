@@ -1,8 +1,4 @@
 
 # DNS Information Gathering Tool
-# Getting DNS info
-# Extracting Email Addresses
-# Getting Shodan info
-# Getting Geolocation info
-# Getting DNS info
-# Getting Whois info
+![infoga](https://github.com/0xF4HAD/infoga/assets/147190499/760f75be-0c64-47d2-a4d9-507d9da47187)
+
